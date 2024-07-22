@@ -15,11 +15,4 @@ router.route("/deleteContact/:id").delete(deleteContact);
 
 
 
-
-// router.route("/:id").
-
-// router.route("/:id")
-
-
-
 module.exports = router; 

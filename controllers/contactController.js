@@ -5,7 +5,13 @@ const Contact = require("../models/contactModels");
 // Get all contacts
 const getContacts = asyncHandler(async (req, res) => {
     const contacts = await Contact.find();
-    res.status(200).json(contacts);
+    const data = contacts
+    res.status(200).json(
+        {
+            status: "success",
+            message: "Data fetched successfully",
+            data
+          });
 });
 
 // Create a contact
@@ -22,7 +28,12 @@ const createContact = asyncHandler(async (req, res) => {
         email,
         phoneNumber,
     });
-    res.status(201).json(contact);
+  const  data = contact;
+    res.status(201).json({
+        status: "success",
+        message: "Contact created successfully",
+        data
+      });
 });
 
 // Get single contact
@@ -33,11 +44,16 @@ const getContact = asyncHandler(async (req, res) => {
     }
     
     const contact = await Contact.findById(req.params.id);
+    const data = contact;
     if (!contact) {
         res.status(404);
         throw new Error("Contact not found");
     }
-    res.status(200).json(contact);
+    res.status(200).json({
+        status: "success",
+        message: "Data fetched successfully",
+        data
+    });
 });
 
 // Update contact
@@ -54,11 +70,11 @@ const updateContact = asyncHandler(async (req, res) => {
     }
   
     const updatedContact = await Contact.findByIdAndUpdate(req.params.id, req.body, { new: true });
-  
+  const data = updatedContact;
     res.status(200).json({
       status: "success",
       message: "Contact edited successfully",
-      updatedContact
+      data
     });
   });
 
