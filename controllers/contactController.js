@@ -2,16 +2,41 @@ const asyncHandler = require("express-async-handler");
 const mongoose = require("mongoose");
 const Contact = require("../models/contactModels");
 
-// Get all contacts
+
+// Get all contacts with pagination
 const getContacts = asyncHandler(async (req, res) => {
-    const contacts = await Contact.find();
-    const data = contacts
-    res.status(200).json(
-        {
-            status: "success",
-            message: "Data fetched successfully",
-            data
-          });
+  
+  // Get the page number and page size from query parameters
+  let { page = 1, pageSize = 5 } = req.query;
+  page = parseInt(page);
+  pageSize = parseInt(pageSize);
+
+  // Calculate the number of documents to skip
+  const skip = (page - 1) * pageSize;
+
+  // Get total number of contacts
+  const totalContacts = await Contact.countDocuments();
+
+  // Fetch contacts for the current page
+  const contacts = await Contact.find()
+      .skip(skip)
+      .limit(pageSize);
+
+  // Calculate the total number of pages
+  const totalPages = Math.ceil(totalContacts / pageSize);
+
+  // Return the data with pagination info
+  res.status(200).json({
+      status: "success",
+      message: "Data fetched successfully",
+      data: {
+          totalContacts,
+          totalPages,
+          currentPage: page,
+          // pageSize,
+          contacts
+      }
+  });
 });
 
 // Create a contact

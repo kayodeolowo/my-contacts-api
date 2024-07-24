@@ -18,7 +18,7 @@ const validateToken = asyncHandler(async (req, res, next) => {
             next(); // Proceed to the next middleware or route handler
         });
     } else {
-        res.status(401).json({ message: "No token provided, authorization denied" });
+        res.status(401).json({ message: "Authorization denied" });
     }
 });
 
