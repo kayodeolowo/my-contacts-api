@@ -7,11 +7,11 @@
 
 2. Authentication: JWT-based authentication
 
-3.Data Validation: Ensures data integrity
+3. Data Validation: Ensures data integrity
 
 4. Getting Started 
 
-5.Prerequisites
+5. Prerequisites
 
 6. Node.js (>= 14.x.x)
 
@@ -43,17 +43,19 @@ https://web.postman.co/workspace/My-Workspace~13ded594-a4e1-451f-8cee-641ecce694
 
 - MongoDB 
 
--Mongoose
+- Mongoose
 
--JWT
+- JWT
 
--dotenv
+- dotenv
 
 
-##License
+## License
 MIT License. See the LICENSE file.
 
 
 
 
-## Documentation Link -- https://web.postman.co/workspace/My-Workspace~13ded594-a4e1-451f-8cee-641ecce69430/documentation/25314406-20ea1355-92fc-4a31-9fc0-80774770d64d
+## Documentation Link 
+
+https://web.postman.co/workspace/My-Workspace~13ded594-a4e1-451f-8cee-641ecce69430/documentation/25314406-20ea1355-92fc-4a31-9fc0-80774770d64d
