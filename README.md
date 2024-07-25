@@ -6,19 +6,29 @@
 1. CRUD Operations: Create, Read, Update, Delete contacts
 
 2. Authentication: JWT-based authentication
--Data Validation: Ensures data integrity
--Getting Started
--Prerequisites
--Node.js (>= 14.x.x)
--npm or yarn
--MongoDB (local or cloud-based)
+
+3.Data Validation: Ensures data integrity
+
+4. Getting Started 
+
+5.Prerequisites
+
+6. Node.js (>= 14.x.x)
+
+7. npm 
+
+8. MongoDB (local or cloud-based)
 
 
 ## Installation
-Clone the repository
-Install dependencies
-Create a .env file with:
-PORT=5001
+
+- Clone the repository
+
+- Install dependencies
+
+- Create a .env file with
+
+- PORT=5001
 
 
 
@@ -27,18 +37,20 @@ https://web.postman.co/workspace/My-Workspace~13ded594-a4e1-451f-8cee-641ecce694
 
 
 ## Technologies
-Node.js
-Express.js
-MongoDB
-Mongoose
-JWT
-dotenv
-Contributing
-Fork the repo
-Create a branch
-Commit changes
-Push and open a Pull Request
-License
+- Node.js
+
+- Express.js 
+
+- MongoDB 
+
+-Mongoose
+
+-JWT
+
+-dotenv
+
+
+##License
 MIT License. See the LICENSE file.
 
 
