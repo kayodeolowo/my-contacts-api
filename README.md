@@ -3,14 +3,14 @@
 ## A RESTful API for managing contacts, built with Node.js, Express.js, and MongoDB.
 
 ## Features
-CRUD Operations: Create, Read, Update, Delete contacts
-Authentication: JWT-based authentication
-Data Validation: Ensures data integrity
-Getting Started
-Prerequisites
-Node.js (>= 14.x.x)
-npm or yarn
-MongoDB (local or cloud-based)
+-CRUD Operations: Create, Read, Update, Delete contacts
+-Authentication: JWT-based authentication
+-Data Validation: Ensures data integrity
+-Getting Started
+-Prerequisites
+-Node.js (>= 14.x.x)
+-npm or yarn
+-MongoDB (local or cloud-based)
 
 
 ## Installation
