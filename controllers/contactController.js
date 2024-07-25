@@ -7,7 +7,7 @@ const Contact = require("../models/contactModels");
 const getContacts = asyncHandler(async (req, res) => {
   
   // Get the page number and page size from query parameters
-  let { page = 1, pageSize = 5 } = req.query;
+  let { page = 1, pageSize = 10 } = req.query;
   page = parseInt(page);
   pageSize = parseInt(pageSize);
 
@@ -19,7 +19,9 @@ const getContacts = asyncHandler(async (req, res) => {
 
   // Fetch contacts for the current page
   const contacts = await Contact.find()
-      .skip(skip)
+  .select('-description') // this part excludes an option i don't need to appear
+  .sort({ createdAt: -1 }) // Sort by createdAt in descending order
+  .skip(skip)
       .limit(pageSize);
 
   // Calculate the total number of pages
@@ -41,24 +43,34 @@ const getContacts = asyncHandler(async (req, res) => {
 
 // Create a contact
 const createContact = asyncHandler(async (req, res) => {
-    console.log(req.body);
-    const { name, email, phoneNumber } = req.body;
-    if (!name || !email || !phoneNumber) {
-        res.status(400);
-        throw new Error("All fields are required");
-    }
+  // console.log(req.body);
+  const { name, email, phoneNumber, description } = req.body;
 
-    const contact = await Contact.create({
-        name,
-        email,
-        phoneNumber,
-    });
-  const  data = contact;
-    res.status(201).json({
-        status: "success",
-        message: "Contact created successfully",
-        data
-      });
+  // Array to collect missing fields
+  let missingFields = [];
+
+  if (!name) missingFields.push("name");
+  if (!email) missingFields.push("email");
+  if (!phoneNumber) missingFields.push("phoneNumber");
+  if (!description) missingFields.push("description");
+
+  if (missingFields.length > 0) {
+      res.status(400);
+      throw new Error(` ${missingFields.join(", ")} is required`);
+  }
+
+  const contact = await Contact.create({
+      name,
+      email,
+      phoneNumber,
+      description,
+  });
+  const data = contact;
+  res.status(201).json({
+      status: "success",
+      message: "Contact created successfully",
+      data
+  });
 });
 
 // Get single contact

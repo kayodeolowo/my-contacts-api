@@ -2,11 +2,11 @@ const mongoose = require("mongoose")
 
 const contactSchema = mongoose.Schema({
 
-    user_id:{
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: "User"
-    },
+    // user_id:{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     required: true,
+    //     ref: "User"
+    // },  to add a specific user id when creating the contacts
 
     
     name: {
@@ -22,6 +22,12 @@ const contactSchema = mongoose.Schema({
     phoneNumber: {
         type: String,
         required: [true, "please add the phone number"]
+    },
+
+
+    description: {
+        type: String,
+        required: [true, "please add the description"]
     },
 
    

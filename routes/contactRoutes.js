@@ -3,8 +3,8 @@ const router = express.Router()
 const {getContact, createContact, deleteContact, updateContact,getContacts} = require("../controllers/contactController");
 const validateToken = require("../middleware/validateTokenHandler");
 
-
-// router.use(validateToken);
+// validation for routes 
+router.use(validateToken);  
 router.route("/").get(getContacts);
 router.route("/:id").get(getContact)
 
